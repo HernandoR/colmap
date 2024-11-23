@@ -1,0 +1,34 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "default",
+            "inherits": "vcpkg",
+            "cacheVariables": {
+                "VCPKG_INSTALL_OPTIONS": "--allow-unsupported",
+                "CUDA_ENABLED": "OFF"
+            }
+        },
+        {
+            "name": "clang-osx",
+            "inherits": "vcpkg",
+            "displayName": "clang-osx-xtools",
+            "description": "Using compilers: C = /usr/bin/clang, CXX = /usr/bin/clang++",
+            "binaryDir": "${sourceDir}/build/",
+            "generator": "Ninja",
+            "environment": {
+                "VCPKG_ROOT": "/Users/lz/vcpkg",
+                "CUDA_ENABLED": "OFF",
+                "CC": "/usr/bin/clang",
+                "CXX": "/usr/bin/clang++"
+            },
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/install/${presetName}",
+                "CMAKE_C_COMPILER": "/usr/bin/clang",
+                "CMAKE_CXX_COMPILER": "/usr/bin/clang++",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "1"
+            }
+        }
+    ]
+}
